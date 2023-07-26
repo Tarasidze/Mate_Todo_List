@@ -6,7 +6,7 @@ from django.views.generic import FormView, CreateView
 from django.urls import reverse_lazy
 
 from todo_list.forms import TaskForm
-from todo_list.models import Task
+from todo_list.models import Task, Tag
 
 
 @login_required
@@ -36,8 +36,31 @@ class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("todo_list:tasks-list")
 
 
+class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
+    pass
+
+
 class TasklDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
     success_url = reverse_lazy("todo_list:tasks-list")
+
+
+class TagsListView(LoginRequiredMixin, generic.ListView):
+    model = Tag
+    pagination = 10
+    context_object_name = "tags_list"
+    template_name = "todo_list/tags_list.html"
+
+
+class TagsCreateView(LoginRequiredMixin, generic.CreateView):
+    pass
+
+
+class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):
+    pass
+
+
+class TagsDeleteView(LoginRequiredMixin, generic.DeleteView):
+    pass
 
 

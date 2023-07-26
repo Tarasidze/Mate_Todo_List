@@ -4,12 +4,6 @@ from todo_list.models import Task
 
 
 class TaskForm(forms.ModelForm):
-    # content = forms.CharField(
-    #     max_length=255,
-    #     required=False,
-    #     label="",
-    #     widget=forms.TextInput(attrs={"placeholder": "content"})
-    # )
 
     class Meta:
         model = Task

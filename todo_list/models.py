@@ -17,5 +17,6 @@ class Task(models.Model):
 
     class Meta:
         ordering=["-is_done", "created_datetime"]
+
     def __str__(self):
         return self.content[:50]
