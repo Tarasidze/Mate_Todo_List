@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Tags List
+    <a href="{% url 'todo_list:tags-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+
+  {% if tags_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for tag in tags_list %}
+        <tr>
+
+          <td>
+              {{ tag.name }}
+          </td>
+
+          <td>
+            <a style="color: #0040ff"
+              href="{% url 'todo_list:tags-update' pk=tag.id %}">
+              Update
+            </a>
+          </td>
+
+          <td>
+            <a style="color: red"
+              href="{% url 'todo_list:tags-delete' pk=tag.id %}">
+              Delete
+            </a>
+          </td>
+
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no tags</p>
+  {% endif %}
+{% endblock %}
