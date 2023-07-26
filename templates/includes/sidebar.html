@@ -18,7 +18,7 @@
   <ul class="sidebar-nav list-group">
     <li class="list-group-item"><a href="{% url 'todo_list:index' %}">Home</a></li>
     {% if user.is_superuser %}
-{#      <li class="list-group-item"><a href="{% url 'todo_list:tags' %}">Tags</a></li>#}
+      <li class="list-group-item"><a href="{% url 'todo_list:tasks-list' %}">Tasks</a></li>
 {#      <li class="list-group-item"><a href="{% url 'todo_lisk:tasks' %}">All task</a></li>#}
     {% endif %}
   </ul>
