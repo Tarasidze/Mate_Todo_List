@@ -12,13 +12,22 @@
     <table class="table">
       <tr>
         <th>Name</th>
+        <th>Update</th>
         <th>Delete</th>
       </tr>
 
       {% for tag in tags_list %}
         <tr>
+
           <td>
               {{ tag.name }}
+          </td>
+
+          <td>
+            <a style="color: #0040ff"
+              href="{% url 'todo_list:tags-update' pk=tag.id %}">
+              Update
+            </a>
           </td>
 
           <td>
@@ -27,6 +36,7 @@
               Delete
             </a>
           </td>
+
         </tr>
       {% endfor %}
     </table>
