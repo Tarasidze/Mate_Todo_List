@@ -1,25 +1,21 @@
-{% load static %}
+  <div class="ml-3 mt-3 card mb-3 ">
+    <a href="{% url 'logout' %}?next={{request.path}}" class="btn btn-secondary btn-block">Logout</a>
+  </div>
 
-<div class="sidebar">
-<link rel="stylesheet" href="/static/css/side-bar.css">
-  {% if user.is_authenticated %}
-    <div class="user-status">
-      {% if user.is_superuser %}
-      {% else %}
-        <p class="inline customer">Employee</p>
-      {% endif %}
-      <p class="logout"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></p>
-    </div>
-  {% else %}
-    <p class="inline guest">(guest)</p>
-    <p class="login"><a href="{% url 'login'%}?next={{request.path}}">Login</a></p>
-  {% endif %}
+  <ul class="list-group shadow-lg mt-6 ml-3">
 
-  <ul class="sidebar-nav list-group">
-    <li class="list-group-item"><a href="{% url 'todo_list:index' %}">Home</a></li>
-    {% if user.is_superuser %}
-      <li class="list-group-item"><a href="{% url 'todo_list:tasks-list' %}">Tasks</a></li>
-      <li class="list-group-item"><a href="{% url 'todo_list:tags-list' %}">All tags</a></li>
-    {% endif %}
+    <li class="list-group-item">
+      <a href="{% url 'todo_list:index' %}" class="btn btn-info btn-block">Home</a>
+    </li>
+
+    <li class="list-group-item">
+      <a href="{% url 'todo_list:tasks-list' %}" class="btn btn-info btn-block">Tasks</a>
+    </li>
+
+    <li class="list-group-item">
+      <a href="{% url 'todo_list:tags-list' %}" class="btn btn-info btn-block">All tags</a>
+    </li>
+
   </ul>
-</div>
+
+
