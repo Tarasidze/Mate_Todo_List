@@ -62,10 +62,10 @@ class TagsCreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):
-    pass
+    model = Tag
+    success_url = reverse_lazy("todo_list:tags-list")
 
 
 class TagsDeleteView(LoginRequiredMixin, generic.DeleteView):
-    pass
-
-
+    model = Tag
+    success_url = reverse_lazy("todo_list:tags-list")
