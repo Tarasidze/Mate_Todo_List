@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="/static/css/index.css"%} ">
+
+  <div class="container">
+    <h1 class="main-title">Tasks</h1>
+    <p class="welcome-message">Welcome <strong>{{ user.get_username }}</strong></p>
+
+    <div class="dynamic-content">
+      <ul class="info-list">
+        <li class="info-item">
+          <span class="info-label">Tasks: </span>
+          <span class="info-value">{{ num_tasks }}</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Task in progress</span>
+          <span class="info-value">{{ num_task_in_progress }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

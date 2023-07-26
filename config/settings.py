@@ -84,7 +84,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "Todo_List.Employee"
+# AUTH_USER_MODEL = "Todo_List.Employee"
 
 LOGIN_REDIRECT_URL = "/"
 
