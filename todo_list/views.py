@@ -72,6 +72,8 @@ class TagsCreateView(LoginRequiredMixin, generic.CreateView):
 
 class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Tag
+    form_class = TagForm
+    template_name = "todo_list/tags_form.html"
     success_url = reverse_lazy("todo_list:tags-list")
 
 
