@@ -5,7 +5,7 @@ from django.views import generic
 from django.views.generic import FormView, CreateView
 from django.urls import reverse_lazy
 
-from todo_list.forms import TaskForm
+from todo_list.forms import TaskForm, TagForm
 from todo_list.models import Task, Tag
 
 
@@ -53,7 +53,11 @@ class TagsListView(LoginRequiredMixin, generic.ListView):
 
 
 class TagsCreateView(LoginRequiredMixin, generic.CreateView):
-    pass
+    model = Tag
+    form_class = TagForm
+    template_name = "todo_list/tags_form.html"
+    success_url = reverse_lazy("todo_list:tags-list")
+
 
 
 class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):

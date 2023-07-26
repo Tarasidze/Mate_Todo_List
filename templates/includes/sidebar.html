@@ -19,7 +19,7 @@
     <li class="list-group-item"><a href="{% url 'todo_list:index' %}">Home</a></li>
     {% if user.is_superuser %}
       <li class="list-group-item"><a href="{% url 'todo_list:tasks-list' %}">Tasks</a></li>
-{#      <li class="list-group-item"><a href="{% url 'todo_lisk:tasks' %}">All task</a></li>#}
+      <li class="list-group-item"><a href="{% url 'todo_list:tags-list' %}">All tags</a></li>
     {% endif %}
   </ul>
 </div>
