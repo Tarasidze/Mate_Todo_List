@@ -20,28 +20,24 @@
 {#    </button>#}
 {#  </form>#}
 
-  {% if order_list %}
+  {% if tasks_list %}
   <div class="order-plates-container">
     <div class="order-column">
-      <h2 class="order-column-heading">Orders In Progress</h2>
-      {% for order in order_list %}
-        {% if not order.completed_order %}
+      <h2 class="order-column-heading">Task in progres</h2>
+      {% for task in tasks_list %}
+        {% if not task.is_done %}
           <div class="order-plate">
-{#            <div class="order-header">#}
-{#              <strong><span class="order-id">Order ID: {{ order.id }}</span></strong>#}
-{#              <div class="order-actions">#}
-{#                <a href="{% url 'todo_list:task-update' task.id %}" class="btn btn-sm btn-info">Edit</a>#}
-{#                <a href="{% url 'todo_list:task-delete' order.id %}" class="btn btn-sm btn-danger">Delete</a>#}
-{##}
-{#              </div>#}
-{#            </div>#}
-            <p class="order-date">Order Creation Date: {{ task.order_creation_date }}</p>
-            <p class="order-customer">Customer: {{ order.customer }}</p>
-            <ul class="order-pizzas">
-              {% for pizza in order.pizzas.all %}
-                <li>({{ pizza.name }})</li>
-              {% endfor %}
-            </ul>
+            <div class="order-header">
+              <strong><span class="order-id">Task id {{ task.id }}</span></strong>
+              <div class="order-actions">
+                <a href="{% url 'todo_list:task-update' task.id %}" class="btn btn-sm btn-info">Update</a>
+                <a href="{% url 'todo_list:task-delete' task.id %}" class="btn btn-sm btn-danger">Delete</a>
+              </div>
+
+            </div>
+            <p class="order-date">Task Creation Date: {{ task.created_datetime }}</p>
+            <p class="order-date">Task Deadline Date: {{ task.deadline_datetime }}</p>
+
             <div>
                 {% if not order.completed_order %}
                 <strong>order in progress</strong>
@@ -50,6 +46,7 @@
                 <strong>completed order</strong>
                 {% endif %}
             </div>
+
           </div>
         {% endif %}
       {% endfor %}

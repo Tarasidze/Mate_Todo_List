@@ -37,7 +37,9 @@ class TaskCreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
-    pass
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("todo_list:tasks-list")
 
 
 class TasklDeleteView(LoginRequiredMixin, generic.DeleteView):
@@ -57,7 +59,6 @@ class TagsCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = TagForm
     template_name = "todo_list/tags_form.html"
     success_url = reverse_lazy("todo_list:tags-list")
-
 
 
 class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):
