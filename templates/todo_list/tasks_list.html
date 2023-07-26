@@ -13,13 +13,6 @@
     </a>
   </h1>
 
-{#  <form action="" method="get" class="form-inline order-search-form">#}
-{#    {{ search_form.as_p }}#}
-{#    <button type="submit" class="btn btn-outline-secondary">#}
-{#      <i class="fas fa-search"></i> Search#}
-{#    </button>#}
-{#  </form>#}
-
   {% if tasks_list %}
   <div class="order-plates-container">
     <div class="order-column">
@@ -41,7 +34,7 @@
             <div>
                 {% if not task.is_done %}
                 <strong>task in progress</strong>
-                <a href="{% url 'todo_list:update_task_status' task.id %}" class="btn btn-sm btn-success">Change status</a>
+                <a href="{% url 'todo_list:update_task_status' task.id %}" class="btn btn-sm btn-success">Complete</a>
                 {% else %}
                 <strong>completed task</strong>
                 {% endif %}
@@ -67,7 +60,7 @@
                 <div>
                   {% if task.is_done %}
                     <strong>task completed</strong>
-                    <a href="{% url 'todo_list:update_task_status' task.id %}" class="btn btn-sm btn-success">Change status</a>
+                    <a href="{% url 'todo_list:update_task_status' task.id %}" class="btn btn-sm btn-success">Undo</a>
                     {% else %}
                     <strong>completed task</strong>
                   {% endif %}
