@@ -24,7 +24,7 @@ def index(request):
 
 class TasksListView(LoginRequiredMixin, generic.ListView):
     model = Task
-    pagination = 10
+    paginate_by = 6
     context_object_name = "tasks_list"
     template_name = "todo_list/tasks_list.html"
 
@@ -45,11 +45,9 @@ class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
 class UpdateTaskStatusView(View):
     def get(self, request, pk: int):
         task = get_object_or_404(Task, id=pk)
-        if task.is_done:
-            task.is_done = False
-        else:
-            task.is_done = True
+        task.is_done = not task.is_done
         task.save()
+
         return redirect("todo_list:tasks-list")
 
 
@@ -60,7 +58,7 @@ class TasklDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class TagsListView(LoginRequiredMixin, generic.ListView):
     model = Tag
-    pagination = 10
+    paginate_by = 5
     context_object_name = "tags_list"
     template_name = "todo_list/tags_list.html"
 
@@ -74,6 +72,8 @@ class TagsCreateView(LoginRequiredMixin, generic.CreateView):
 
 class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Tag
+    form_class = TagForm
+    template_name = "todo_list/tags_form.html"
     success_url = reverse_lazy("todo_list:tags-list")
 
 
